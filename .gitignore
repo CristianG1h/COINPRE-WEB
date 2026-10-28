@@ -1,0 +1,21 @@
+# Nunca subir la configuración privada del correo o el entorno.
+.env
+.env.*
+!.env.example
+**/.env
+**/.env.*
+!**/.env.example
+coinpre-mail-config.php
+**/coinpre-mail-config.php
+
+# Residuos del hosting y dependencias de la plantilla anterior.
+.DS_Store
+**/.DS_Store
+public_html/assets/inc/app/
+public_html/assets/inc/template/
+
+# Archivos locales de pruebas y paquetes de entrega.
+node_modules/
+.cache/
+*.zip
+*.log

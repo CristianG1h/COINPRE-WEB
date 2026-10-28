@@ -1,5 +1,13 @@
 # Historial de cambios
 
+## 2026-10-28 · Línea de tiempo móvil en formato original
+
+Las cuatro etapas de formación de la portada conservan en móvil los círculos, iconos y tarjetas conectadas de la versión de escritorio, ahora dispuestas verticalmente y con tamaños adaptados a pantallas pequeñas. La distribución de escritorio no cambia.
+
+## 2026-10-28 · Páginas de error compatibles con GitHub Pages
+
+Corregidas las imágenes de marca y las rutas de navegación de los errores 403, 404, 500 y 503. Sus enlaces resuelven correctamente dentro de `/COINPRE-WEB/` en GitHub Pages (incluso con URLs inexistentes anidadas) y siguen funcionando en la raíz del dominio de Hostinger. Se autoriza por hash únicamente el breve script de ajuste de rutas en la política CSP de Apache.
+
 ## 2026-10-28 · Contacto y diseño móvil 10
 
 WhatsApp y botones comerciales dirigen al número principal 310 791 8133 en las páginas del sitio; el 315 612 8907 se conserva como línea comercial adicional únicamente en el footer. Barra de correo con icono SVG accesible, tarjetas 01–04 de la portada reorganizadas exclusivamente en móvil y pie legal centrado. Se mantienen las composiciones de escritorio, formularios y políticas anteriores.

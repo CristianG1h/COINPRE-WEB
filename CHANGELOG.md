@@ -1,5 +1,9 @@
 # Historial de cambios
 
+## 2026-10-28 · Contacto y diseño móvil 10
+
+WhatsApp y botones comerciales dirigen al número principal 310 791 8133 en las páginas del sitio; el 315 612 8907 se conserva como línea comercial adicional únicamente en el footer. Barra de correo con icono SVG accesible, tarjetas 01–04 de la portada reorganizadas exclusivamente en móvil y pie legal centrado. Se mantienen las composiciones de escritorio, formularios y políticas anteriores.
+
 ## 2026-10-28 · Corrección responsive de cursos y servicios 9
 
 En pantallas de celular, todas las secciones de cursos y servicios que antes alternaban fotografía y texto se presentan como una tarjeta consistente, con imagen arriba e información debajo. Se eliminan los márgenes desiguales y los saltos innecesarios entre tarjetas; se normaliza el tamaño de las fotografías sin bandas laterales y se reúnen imagen y texto en una sola animación de entrada. Incluye Alturas, Confinados, Especializados, Conducción, Más Soluciones y La Empresa. El orden alternado y la apariencia de escritorio no cambian.

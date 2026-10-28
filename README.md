@@ -2,6 +2,10 @@
 
 La versión más reciente del sitio está en `public_html`. Este repositorio guarda el código fuente y los recursos de la web, sin activar por sí solo ninguna publicación en Hostinger.
 
+## Ajustes de contacto y móvil · versión 10 (28 de octubre de 2026)
+
+WhatsApp y solicitudes comerciales usan el número principal **310 791 8133** en todas las páginas. La línea **315 612 8907** aparece solo como atención comercial adicional en el pie de página. El correo de la barra superior tiene un icono vectorial claro; en móvil, los cuatro pasos de la portada aparecen como tarjetas compactas y alineadas, y el pie legal queda centrado con márgenes consistentes. Archivos con cambios de estilo e interacción usan versión 10 para evitar caché anterior.
+
 ## Nueva revisión visual · 28 de octubre de 2026
 
 Esta entrega parte de la versión mejorada `coinpresas.co (2)` y conserva el ZIP original `coinpresas.co` como referencia; no se ha publicado nada.
@@ -68,7 +72,7 @@ El HTML es estático y el encabezado/pie se repite en las ocho páginas. Si camb
 
 ## Antes de publicar
 
-1. Confirmar que **315 612 8907** es el WhatsApp que recibirá los contactos. Se tomó de Dirección Comercial en el sitio recibido; no se repartieron contactos entre los otros teléfonos. Se cambia una vez en `coinpre.js`; los enlaces de respaldo del HTML también deben actualizarse si se cambia de número.
+1. El número principal de WhatsApp es **310 791 8133** (confirmado el 28 de octubre). El **315 612 8907** se conserva únicamente como línea comercial alternativa en el footer.
 2. Confirmar el buzón **contacto@coinpresas.co**. El formulario anterior enviaba a una dirección de la plantilla. El nuevo endpoint usa destinatario y remitente fijos de COINPRE.
 3. En una copia de pruebas de Hostinger, usar PHP 8.1 o superior compatible y verificar que el servicio de correo PHP esté habilitado. Copiar `coinpre-mail-config.example.php` como `coinpre-mail-config.php` **al lado de public_html, fuera de la carpeta pública**, y cambiar `enabled` a `true`. Este archivo está excluido de Git. Si no existe o está deshabilitado, el formulario muestra un aviso y ofrece WhatsApp.
 4. Probar un envío autorizado de extremo a extremo y comprobar bandeja de entrada/spam y el remitente. `mail()` aceptado no garantiza recepción. Fuente: https://www.php.net/manual/en/function.mail.php

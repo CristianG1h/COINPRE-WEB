@@ -1,7 +1,7 @@
 /* Shared interactions. No trackers or personal data are sent to analytics. */
 (() => {
  'use strict';
- const phone = '573156128907'; // Published Dirección Comercial number. Change here after confirming campaign routing.
+ const phone = '573107918133'; // Línea comercial principal confirmada para todos los enlaces de WhatsApp.
  const path = location.pathname.split('/').pop() || 'index.html';
  const contexts = {
   'index.html': ['Información general', ['¿Cuál será tu próximo paso?', 'Alturas, confinados o conducción', 'Encuentra la formación que buscas']],

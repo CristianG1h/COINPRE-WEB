@@ -1,0 +1,4 @@
+Options -Indexes
+<FilesMatch "^(?!sendemail\.php$).*">
+ Require all denied
+</FilesMatch>

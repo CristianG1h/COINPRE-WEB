@@ -37,10 +37,13 @@ jobs:
       - name: Validar formularios y correos sin enviar mensajes
         run: node --experimental-strip-types --test tests/*.test.mjs
 
+      - name: Preparar vista previa sin duplicar el sitio en Google
+        run: node tools/prepare-pages.mjs
+
       - name: Preparar pagina web
         uses: actions/upload-pages-artifact@v4
         with:
-          path: ./public_html
+          path: ./.pages-site
 
       - name: Publicar pagina
         id: deployment

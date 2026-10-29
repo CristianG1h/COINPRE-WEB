@@ -102,16 +102,17 @@
  const note = document.querySelector('.cp-wa-note');
  const bubble = document.querySelector('.cp-wa-bubble');
  const pageOffers = offers[path] || offers['index.html'];
- let offerIndex = 0, dismissed = document.body.classList.contains('cp-legal-page'), idleTimer, typingTimer;
+ let offerIndex = 0, dismissed = document.body.classList.contains('cp-legal-page'), dismissedUntil = 0, idleTimer, typingTimer;
  const smallScreen = matchMedia('(max-width: 767px)');
  const mobileQuietZones = new Set();
- try { dismissed ||= sessionStorage.getItem('cp-wa-dismissed') === '1'; } catch {}
  note.hidden = dismissed;
  note.classList.remove('is-visible');
  note.querySelector('small').textContent = 'CONSULTA CON NUESTRO EQUIPO';
  const hideNote = () => { clearInterval(typingTimer); note.querySelector('strong').classList.remove('is-typing'); note.classList.remove('is-visible'); note.setAttribute('aria-hidden', 'true'); };
+ let lastScroll = 0;
  const showOffer = (rotate = false) => {
-  if (dismissed || document.hidden || document.querySelector('dialog[open]') || document.activeElement?.closest('form') || (smallScreen.matches && mobileQuietZones.size)) return;
+  if (Date.now() - lastScroll < 5000) return;
+  if (dismissed || Date.now() < dismissedUntil || document.hidden || document.querySelector('dialog[open]') || document.activeElement?.closest('form') || (smallScreen.matches && mobileQuietZones.size)) return;
   if (rotate) offerIndex = (offerIndex + 1) % pageOffers.length;
   const [question, message] = pageOffers[offerIndex];
   const href = 'https://wa.me/' + phone + '?text=' + encodeURIComponent('Hola, COINPRE. ' + message + ' Vengo de la página: ' + context + '.');
@@ -136,14 +137,14 @@
   note.removeAttribute('aria-hidden');
   requestAnimationFrame(() => note.classList.add('is-visible'));
  };
- note.querySelector('button').addEventListener('click', () => { dismissed = true; hideNote(); note.hidden = true; clearTimeout(idleTimer); try { sessionStorage.setItem('cp-wa-dismissed', '1'); } catch {} });
+ note.querySelector('button').addEventListener('click', () => { dismissedUntil = Date.now() + 60000; hideNote(); note.hidden = true; clearTimeout(idleTimer); });
  idleTimer = setTimeout(() => showOffer(), 1800);
- setInterval(() => { if (note.classList.contains('is-visible')) showOffer(true); }, 19000);
+ setInterval(() => showOffer(true), 19000);
  bubble.addEventListener('mouseenter', () => showOffer());
  bubble.addEventListener('focus', () => showOffer());
  document.addEventListener('focusin', e => { if (e.target.closest('form')) { hideNote(); clearTimeout(idleTimer); } });
  document.addEventListener('focusout', e => { if (e.target.closest('form')) { clearTimeout(idleTimer); idleTimer = setTimeout(() => showOffer(), 5000); } });
- document.addEventListener('visibilitychange', () => { if (document.hidden) hideNote(); });
+ document.addEventListener('visibilitychange', () => { clearTimeout(idleTimer); if (document.hidden) hideNote(); else idleTimer = setTimeout(() => showOffer(true), 5000); });
  document.querySelectorAll('[data-enroll],[data-video]').forEach(el => el.addEventListener('click', hideNote));
  if ('IntersectionObserver' in window) {
   const quietObserver = new IntersectionObserver(entries => {
@@ -157,6 +158,7 @@
  }
  smallScreen.addEventListener?.('change', () => { if (smallScreen.matches && mobileQuietZones.size) hideNote(); });
  addEventListener('scroll', () => {
+  lastScroll = Date.now();
   hideNote();
   clearTimeout(idleTimer);
   idleTimer = setTimeout(() => showOffer(), 5000);

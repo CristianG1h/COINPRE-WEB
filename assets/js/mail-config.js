@@ -1,0 +1,2 @@
+/* Public routing only. Never put a Brevo key or a Supabase service-role key here. */
+window.COINPRE_MAIL = Object.freeze({endpoint: 'https://uauyafehtnimjetnkryz.supabase.co/functions/v1/contact', anonKey: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InVhdXlhZmVodG5pbWpldG5rcnl6Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3OTMyMzc3MDMsImV4cCI6MjEwODgxMzcwM30.LYdCQ5qNMi6CG-C05qCMUu6uGha4aqXaSrEP_9S5C1c'});

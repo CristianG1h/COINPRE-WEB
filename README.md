@@ -2,6 +2,10 @@
 
 La versión más reciente del sitio está en `public_html`. Este repositorio guarda el código fuente y los recursos de la web, sin activar por sí solo ninguna publicación en Hostinger.
 
+## Correos transaccionales · 29 de octubre de 2026
+
+Los formularios de GitHub Pages envían mediante Supabase y Brevo: aviso a contacto@coinpresas.co, copia temporal a Cristian y confirmación al visitante. La clave privada está en Supabase, nunca en el repositorio. Configuración, pruebas y mantenimiento: [CORREOS-BREVO](docs/CORREOS-BREVO.md). El PHP previo queda como legado sin uso por el formulario actual. El servidor solo acepta los dominios publicados, no localhost.
+
 ## Ajustes de contacto y móvil · versión 10 (28 de octubre de 2026)
 
 WhatsApp y solicitudes comerciales usan el número principal **310 791 8133** en todas las páginas. La línea **315 612 8907** aparece solo como atención comercial adicional en el pie de página. El correo de la barra superior tiene un icono vectorial claro; en móvil, los cuatro pasos de la portada aparecen como tarjetas compactas y alineadas, y el pie legal queda centrado con márgenes consistentes. Archivos con cambios de estilo e interacción usan versión 10 para evitar caché anterior.

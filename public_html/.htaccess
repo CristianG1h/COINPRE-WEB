@@ -10,7 +10,7 @@ ErrorDocument 503 /503.html
  Header always set Referrer-Policy "strict-origin-when-cross-origin"
  Header always set X-Frame-Options "SAMEORIGIN"
  Header always set Permissions-Policy "camera=(), microphone=(), geolocation=()"
- Header always set Content-Security-Policy "default-src 'self'; script-src 'self' 'sha256-z61In38P5FpqdpeFgfzw99+CaOIb+zS3LRxojry6Je8='; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; media-src 'self' https://res.cloudinary.com; connect-src 'self'; frame-src https://www.google.com; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'self'"
+ Header always set Content-Security-Policy "default-src 'self'; script-src 'self' 'sha256-z61In38P5FpqdpeFgfzw99+CaOIb+zS3LRxojry6Je8='; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; media-src 'self' https://res.cloudinary.com; connect-src 'self' https://uauyafehtnimjetnkryz.supabase.co; frame-src https://www.google.com; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'self'"
 </IfModule>
 <FilesMatch "(?i)(^\.|\.env|\.log$|\.sql$|\.bak$|config\.php$)">
  Require all denied

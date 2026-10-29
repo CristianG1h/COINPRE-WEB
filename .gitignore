@@ -19,3 +19,7 @@ node_modules/
 .cache/
 *.zip
 *.log
+
+.qa/
+coinpre-mail-data/
+**/coinpre-mail-data/

@@ -163,17 +163,24 @@
  }, {passive:true});
  const top=document.querySelector('.cp-back-top');const onScroll=()=>{top.hidden=window.scrollY<500;};addEventListener('scroll',onScroll,{passive:true});onScroll();top.addEventListener('click',()=>scrollTo({top:0,behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'instant':'smooth'}));
  document.querySelectorAll('.cp-form').forEach(form=>{
+  let requestId = null;
   form.elements.service.value=context;form.elements.source.value=path;
   form.addEventListener('submit',async e=>{
    e.preventDefault();if(!form.reportValidity())return;
    const button=form.querySelector('[type=submit]'), status=form.querySelector('.cp-status');
    if(button.disabled)return; button.disabled=true;status.textContent='Enviando tu solicitud…';status.dataset.error='false';
-   const controller=new AbortController();const timeout=setTimeout(()=>controller.abort(),20000);
+   const controller=new AbortController();const timeout=setTimeout(()=>controller.abort(),45000);
    try{
-    const response=await fetch(form.action,{method:'POST',body:new FormData(form),signal:controller.signal,headers:{Accept:'application/json'}});
+    const config=window.COINPRE_MAIL;
+    if(!config?.endpoint || !config?.anonKey)throw new Error('Estamos configurando el envío por correo. Por ahora puedes escribirnos por WhatsApp.');
+    requestId ||= crypto.randomUUID();
+    const payload=Object.fromEntries(new FormData(form));
+    payload.request_id=requestId;
+    payload.form_label=form.closest('dialog')?'Inscripción en ventana':'Formulario de la página';
+    const response=await fetch(config.endpoint,{method:'POST',body:JSON.stringify(payload),signal:controller.signal,headers:{Accept:'application/json','Content-Type':'application/json',Authorization:'Bearer '+config.anonKey,apikey:config.anonKey}});
     const data=await response.json();if(!response.ok||data.ok!==true)throw new Error(data.message||'No fue posible enviar. Intenta de nuevo o escríbenos por WhatsApp.');
-    event('form_success',form.elements.service.value);status.textContent=data.message;form.reset();form.elements.service.value=context;form.elements.source.value=path;
-   }catch(error){status.dataset.error='true';status.textContent=error.name==='AbortError'?'No pudimos confirmar el envío. Escríbenos por WhatsApp antes de reenviar.':(error instanceof SyntaxError?'El envío por correo requiere el servidor PHP configurado. Puedes contactarnos por WhatsApp.':error.message);}
+    event('form_success',form.elements.service.value);status.textContent=data.message;form.reset();requestId=null;form.elements.service.value=context;form.elements.source.value=path;
+   }catch(error){status.dataset.error='true';status.textContent=error.name==='AbortError'?'No pudimos confirmar el envío. Escríbenos por WhatsApp antes de reenviar.':(error instanceof SyntaxError?'No pudimos confirmar el envío. Puedes contactarnos por WhatsApp.':error.message);}
    finally{clearTimeout(timeout);button.disabled=false;}
   });
  });

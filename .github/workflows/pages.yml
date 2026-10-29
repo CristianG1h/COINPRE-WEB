@@ -10,6 +10,10 @@ permissions:
   pages: write
   id-token: write
 
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
 jobs:
   deploy:
     runs-on: ubuntu-latest
@@ -24,6 +28,14 @@ jobs:
 
       - name: Configurar GitHub Pages
         uses: actions/configure-pages@v5
+
+      - name: Preparar Node para validar el correo
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      - name: Validar formularios y correos sin enviar mensajes
+        run: node --experimental-strip-types --test tests/*.test.mjs
 
       - name: Preparar pagina web
         uses: actions/upload-pages-artifact@v4

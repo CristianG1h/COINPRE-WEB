@@ -1,0 +1,22 @@
+name: Preparar versión para Hostinger
+on:
+  push:
+    branches: [main]
+    paths: ['public_html/**', '.github/workflows/hostinger.yml']
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: hostinger-branch
+  cancel-in-progress: false
+jobs:
+  prepare:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
+      - name: Publicar únicamente la carpeta pública
+        run: |
+          git subtree split --prefix=public_html -b hostinger-build
+          git push origin hostinger-build:hostinger

@@ -71,7 +71,7 @@
   'coinpre-cursos-conduccion.html': [
    ['¿Quieres aprender a conducir automóvil?', 'Quiero información sobre el curso de conducción B1 para automóvil particular.'],
    ['¿Buscas formación para servicio público?', 'Quiero información sobre el curso de conducción C1.'],
-   ['¿Quieres aprender a conducir moto?', 'Quiero información de los cursos de motocicleta A1 y A2.'],
+   ['¿Quieres aprender a conducir moto?', 'Quiero información de los cursos de motocicleta A2.'],
    ['¿Qué necesitas para inscribirte en el CEA?', 'Quiero conocer requisitos y programación de los cursos del CEA.']
   ],
   'coinpre-cursos-alto-riesgo.html': [
